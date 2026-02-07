@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    Hi
+    <div id="header">
+        <h1>The Notes App</h1>
+        <div id="account">
+            <p id="content">Welcome, <%=username%>
+            </p>
+            <div class="sign-login"><a href="/login">Logout</a></div>
+        </div>
+    </div>
+    <div id="main-content">
+        <div class="container">
+            <form action="/dashboard" method="POST">
+                <h2>Add Note</h2>
+                <input type="hidden" name="username" value="<%= username %>">
+
+                <input type="text" name="title" placeholder="Title" required>
+                <textarea name="content" placeholder="Write note..." required></textarea>
+
+                <input type="submit" class="btn">
+            </form>
+            <div id="content-box">
+                <h2>Your Notes</h2>
+                <% notes.forEach(note => { %>
+                    <div class="notess">
+                        <h4><%=note.title%></h4>
+                        <p><%=note.content%></p>
+                    </div>
+                <%}); %>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

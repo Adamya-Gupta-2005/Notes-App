@@ -11,6 +11,4 @@ router.get('/',auth.getLogin);
 router.get('/login',auth.getLogin);
 router.post('/login',auth.postLogin);
 
-router.get('/dashboard',auth.getDashboard);
-
 module.exports = router;

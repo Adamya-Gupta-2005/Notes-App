@@ -30,20 +30,14 @@ async function postLogin(req, res) {
     res.redirect(`/dashboard?user=${user.username}`);
 }
 
-async function getDashboard(req, res) {
-    const username = req.query.user;
-    if (!username) return res.redirect('/login');
-
-    const user = await User.findOne({ username });
-    if (!user) return res.redirect('/login');
-
-    res.render('dashboard', { username });
+function getLogout(req,res){
+    res.render('login');
 }
+
 
 module.exports = {
     getSignup,
     postSignup,
     getLogin,
     postLogin,
-    getDashboard
 };
